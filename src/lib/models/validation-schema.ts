@@ -46,3 +46,31 @@ export const updateTestSchema = z.object({
     .optional(),
   description: z.string().optional(),
 });
+
+export const postSchema = z.object({
+  title: z.string().min(2, { message: "Title must be at least 2 characters long" })
+    .max(200, { message: "Title must be at most 200 characters long" }),
+  slug: z.string().min(2, { message: "Slug must be at least 2 characters long" })
+    .max(200, { message: "Slug must be at most 200 characters long" }),
+  content: z.string().min(10, { message: "Content must be at least 10 characters long" }),
+  excerpt: z.string().max(500, { message: "Excerpt must be at most 500 characters long" }).optional(),
+  coverImage: z.string().url({ message: "Cover image must be a valid URL" }).optional(),
+  published: z.boolean().default(false),
+  categoryIds: z.array(z.string()).optional(),
+  tagIds: z.array(z.string()).optional(),
+});
+
+export const updatePostSchema = z.object({
+  title: z.string().min(2, { message: "Title must be at least 2 characters long" })
+    .max(200, { message: "Title must be at most 200 characters long" })
+    .optional(),
+  slug: z.string().min(2, { message: "Slug must be at least 2 characters long" })
+    .max(200, { message: "Slug must be at most 200 characters long" })
+    .optional(),
+  content: z.string().min(10, { message: "Content must be at least 10 characters long" }).optional(),
+  excerpt: z.string().max(500, { message: "Excerpt must be at most 500 characters long" }).optional(),
+  coverImage: z.string().url({ message: "Cover image must be a valid URL" }).optional(),
+  published: z.boolean().optional(),
+  categoryIds: z.array(z.string()).optional(),
+  tagIds: z.array(z.string()).optional(),
+});

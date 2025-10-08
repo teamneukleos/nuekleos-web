@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { IApiError, IApiResponse, IProduct, IValidationError } from "./models/models";
-import { productSchema, updateProductSchema } from "./models/validation-schema";
+import { IApiError, IApiResponse, IProduct, IValidationError, IPost } from "./models/models";
+import { productSchema, updateProductSchema, postSchema, updatePostSchema } from "./models/validation-schema";
 
 async function handleValidationResponse (response: Response) {
   const issues = await response.json() as IValidationError[];
@@ -62,6 +62,31 @@ export const editProduct = async (id: string, data: z.infer<typeof updateProduct
 
 export const deleteProduct = async (id: string): Promise<IApiResponse<IProduct>> => {
   return handleApiCalls(await fetch(process.env.NEXT_PUBLIC_BROWSER_URL + "/api/products/" + id, {
+    method: "DELETE",
+    headers: { "contentType": "application/json" },
+  }));
+};
+
+export const getPosts = async (): Promise<IApiResponse<IPost[]>> => {
+  return handleApiCalls(await fetch(process.env.NEXT_PUBLIC_BROWSER_URL + "/api/posts", { method: "GET" }));
+};
+
+export const createPost = async (input: z.infer<typeof postSchema>): Promise<IApiResponse<IPost>> => {
+  return handleApiCalls(await fetch(process.env.NEXT_PUBLIC_BROWSER_URL + "/api/posts", {
+    method: "POST",
+    body: JSON.stringify(input),
+  }));
+};
+
+export const editPost = async (id: string, data: z.infer<typeof updatePostSchema>): Promise<IApiResponse<IPost>> => {
+  return handleApiCalls(await fetch(process.env.NEXT_PUBLIC_BROWSER_URL + "/api/posts/" + id, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+  }));
+};
+
+export const deletePost = async (id: string): Promise<IApiResponse<IPost>> => {
+  return handleApiCalls(await fetch(process.env.NEXT_PUBLIC_BROWSER_URL + "/api/posts/" + id, {
     method: "DELETE",
     headers: { "contentType": "application/json" },
   }));

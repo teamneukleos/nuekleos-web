@@ -2,7 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth, { User } from "next-auth";
 import prisma from "@/lib/prisma";
 import { compare } from "bcryptjs";
-import { Permission, Role } from "@prisma/client";
+import { User as UserType } from "@prisma/client";
 
 export const { handlers: { GET, POST }, auth } = NextAuth({
   trustHost: true,
@@ -21,7 +21,6 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
             where: {
               OR: [
                 { email: username as string },
-                { username: username as string }
               ]
             }
           });
@@ -44,7 +43,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
         token.sub = user.id;
         token.name = user.name;
         token.email = user.email;
-        token.permissions = await getUserPermissions(user);
+        // token.role = user.role;
       }
 
       return token;
@@ -62,31 +61,3 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
     },
   },
 });
-
-async function getUserPermissions (user: User): Promise<Permission[]> {
-  const permissions = new Set<Permission>();
-  const roles: Role[] = [];
-
-  const claims = await prisma.claim.findMany({
-    where: { user_id: user.id, active: true },
-    include: { permission: true, role: true }
-  });
-
-  claims.forEach(({ role, permission }) => {
-    if (permission?.active) permissions.add(permission);
-    if (role) roles.push(role);
-  });
-
-  const rolePermissions = await prisma.permissionRole.findMany({
-    where: {
-      active: true,
-      role_name: { in: roles.map(({ name }) => name) },
-      permission_name: { notIn: [...permissions].map(({ name }) => name) },
-    },
-    include: { permission: true }
-  });
-
-  rolePermissions.forEach(({ permission }) => permissions.add(permission));
-
-  return [...permissions];
-}

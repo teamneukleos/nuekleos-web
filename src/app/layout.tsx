@@ -3,15 +3,11 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import ReactQueryProvider from "./react-query-context";
 import { Sora } from "next/font/google";
-import PartnerWithUs from "@/components/PartnerWithUs";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import OurPartner from "@/components/OurPartner";
 
-const sora = Sora({ 
-  subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500']
-})
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500"]
+});
 
 export const metadata: Metadata = {
   title: "Ethnocentrique",
@@ -24,14 +20,10 @@ export default function RootLayout ({ children }: Readonly<{
   return (
     <html lang="en">
       <body className={sora.className}>
-        <Navbar />
         <ReactQueryProvider>
           {children}
           <Toaster />
         </ReactQueryProvider>
-        <OurPartner />
-        <PartnerWithUs />
-        <Footer />
       </body>
     </html>
   );
