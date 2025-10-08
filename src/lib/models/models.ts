@@ -55,3 +55,45 @@ export interface IResult extends IBase {
   value: string;
   description: string;
 }
+
+export interface IPost {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt?: string;
+  coverImage?: string;
+  published: boolean;
+  publishedAt?: string;
+  authorId: string;
+  author?: IUser;
+  categories?: ICategory[];
+  tags?: ITag[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ICategory {
+  id: string;
+  name: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ITag {
+  id: string;
+  name: string;
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+}

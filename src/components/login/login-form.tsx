@@ -55,7 +55,7 @@ export default function LoginForm () {
       }
 
       toast({ description: "Login successfull" }); // TODO: Translate text
-      router.push("/app"); // TODO: Complex logic to handle login
+      router.push("/admin"); // TODO: Complex logic to handle login
     } catch (_error) {
       console.error("error caught");
     }
