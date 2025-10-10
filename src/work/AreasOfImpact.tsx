@@ -100,30 +100,7 @@ export default function AreasOfImpact() {
       </section>
 
       {/* Impact Images Section - 4 Images */}
-      <section className="w-full py-12 px-6 md:px-12 lg:px-16 bg-white">
-        <div className="max-w-7xl mx-auto space-y-6">
-          <img
-            src="/areasofimpact/bussiness-development.png"
-            alt="Business Development"
-            className="w-full h-auto object-cover"
-          />
-          <img
-            src="/areasofimpact/market-access-facilitation.png"
-            alt="Market Access Facilitation"
-            className="w-full h-auto object-cover"
-          />
-          <img
-            src="/areasofimpact/skills-development.png"
-            alt="Skill Development & Training"
-            className="w-full h-auto object-cover"
-          />
-          <img
-            src="/areasofimpact/strategic-partnerships.png"
-            alt="Strategic Partnerships"
-            className="w-full h-auto object-cover"
-          />
-        </div>
-      </section>
+      
     </>
   );
 }

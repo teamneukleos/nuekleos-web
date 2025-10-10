@@ -7,14 +7,14 @@ const OurInitiatives = () => {
       description:
         "Equipping young fashion entrepreneurs, with everything needed to excel",
       image: "/fashion-future.png",
-      link: "/initiatives",
+      link: "/initiatives#fashionfuture",
     },
     {
       title: "African Cobblers Ventures Limited",
       description:
         "Our specialized division, dedicated to footwear manufacturing.",
       image: "/african-cobblers.png",
-      link: "/initiatives",
+      link: "/initiatives#africacobblers",
     },
   ];
 

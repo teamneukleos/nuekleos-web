@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -22,11 +23,13 @@ const About = () => {
           You create, we connect. <br />
           You imagine, we open doors.
         </h2>
-        <p className="text-base md:text-lg leading-relaxed text-gray-200">
-          We celebrate heritage by preserving traditional crafts, uplifting Indigenous art, 
-          and nurturing local creative ecosystems. Through youth-focused entrepreneurship 
-          and innovation, we transform creativity and culture into opportunity; building a 
-          future rooted in pride, dignity, and possibility for this generation — and the next.
+        <p className="text-sm md:text-lg leading-relaxed text-gray-200">
+          We celebrate heritage by preserving traditional crafts, <br />
+          uplifting Indigenous art, and nurturing local creative <br />
+          ecosystems. Through youth-focused entrepreneurship <br />
+          and innovation, we transform creativity and culture into <br />
+          opportunity; building a future rooted in pride, dignity, <br />
+          and possibility for this generation — and the next.
         </p>
 
         {/* Read More Button */}

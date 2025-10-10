@@ -1,4 +1,6 @@
+"use client";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const WhatWeDo = () => {
   const services = [
@@ -8,13 +10,15 @@ const WhatWeDo = () => {
         "Through entrepreneurship, skill development programs and our startup accelerator projects, we provide hands-on business support that connect and support local creatives and MSMEs.",
       bg: "bg-black",
       textColor: "text-white",
+      link: "/work#bussiness-development",
     },
     {
       title: "Market Access Facilitation",
       description:
-        "To provide local creatives and businesses with the tools and support needed to access new markets, both locally and internationally",
+        "To provide local creatives and businesses with the tools and support needed to access new markets, both locally and internationally.",
       bg: "bg-orange-600",
       textColor: "text-white",
+      link: "/work#market-access",
     },
     {
       title: "Skill Development",
@@ -22,13 +26,15 @@ const WhatWeDo = () => {
         "Implementing upskilling programs and standardization initiatives to enhance the capabilities of local creatives and MSMEs.",
       bg: "bg-amber-500",
       textColor: "text-white",
+      link: "/work#skills-development",
     },
     {
       title: "Strategic Partnerships & Collaborations",
       description:
-        "Providing strategic guidance and partnership opportunities to enhance operational efficiency for SMEs, to open new markets",
+        "Providing strategic guidance and partnership opportunities to enhance operational efficiency for SMEs, to open new markets.",
       bg: "bg-lime-600",
       textColor: "text-white",
+      link: "/work#strategic-partnership",
     },
   ];
 
@@ -39,7 +45,7 @@ const WhatWeDo = () => {
         What We Do
       </h2>
 
-      {/* Cards Container*/}
+      {/* Cards Container */}
       <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scrollbar-hide">
         <div className="flex gap-6 min-w-max">
           {services.map((service, index) => (
@@ -56,8 +62,10 @@ const WhatWeDo = () => {
                 </p>
               </div>
 
-              <a
-                href="/work"
+              {/* Smooth link */}
+              <Link
+                href={service.link}
+                scroll={true}
                 className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
               >
                 Read More
@@ -65,7 +73,7 @@ const WhatWeDo = () => {
                   size={18}
                   className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
                 />
-              </a>
+              </Link>
             </div>
           ))}
         </div>

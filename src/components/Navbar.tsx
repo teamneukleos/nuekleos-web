@@ -1,9 +1,14 @@
 "use client";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  
+  // Check if we're on a stories page
+  const isStoriesPage = pathname?.startsWith('/stories/');
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -15,23 +20,23 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="absolute top-0 left-0 w-full z-20 px-6 py-4 flex justify-between items-center text-white">
+    <nav className={`absolute top-0 left-0 w-full z-20 px-6 py-4 flex justify-between items-center ${isStoriesPage ? 'text-gray-900' : 'text-white'}`}>
       {/* Logo */}
-      <a href="">
-      <div className="flex items-center">
-        <img 
-          src="/logo.svg" 
-          alt="Ethnocentrique" 
-          className="h-6 w-auto"
-        />
-      </div>
+      <a href="/">
+        <div className="flex items-center">
+          <img 
+            src={isStoriesPage ? "/logo-black.svg" : "/logo.svg"}
+            alt="Ethnocentrique" 
+            className="h-6 w-auto"
+          />
+        </div>
       </a>
 
-      {/* Desktop Menu - Reduced spacing and font size */}
+      {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-6 text-sm font-normal">
         {navLinks.map((link) => (
           <li key={link.name}>
-            <a href={link.href} className="hover:text-orange-400 transition">
+            <a href={link.href} className={`transition ${isStoriesPage ? 'hover:text-orange-600' : 'hover:text-orange-400'}`}>
               {link.name}
             </a>
           </li>
@@ -49,12 +54,12 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {open && (
-        <div className="absolute top-16 right-6 bg-black bg-opacity-90 p-6 rounded-lg space-y-4 md:hidden">
+        <div className={`absolute top-16 right-6 p-6 rounded-lg space-y-4 md:hidden ${isStoriesPage ? 'bg-white shadow-lg' : 'bg-black bg-opacity-90'}`}>
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="block text-white hover:text-orange-400"
+              className={`block transition ${isStoriesPage ? 'text-gray-900 hover:text-orange-600' : 'text-white hover:text-orange-400'}`}
               onClick={() => setOpen(false)}
             >
               {link.name}

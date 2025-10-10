@@ -8,6 +8,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10">
         {/* Left column */}
         <div>
+          <a href="">
           {/* Main logo */}
           <Image
             src="/logo.svg"
@@ -16,6 +17,7 @@ const Footer = () => {
             height={60}
             className="mb-4"
           />
+          </a>
           {/* Tagline */}
           <p className="text-xs mb-6 text-gray-300 leading-relaxed">
             Reviving the fashion and art industry across Africa
@@ -40,10 +42,11 @@ const Footer = () => {
           <div>
             <h3 className="text-sm mb-4">Location</h3>
             <p className="text-xs text-gray-300 mb-4 leading-relaxed">
-              4b Prince Kayode Akingbade Close, Off Muri Okunola Street, Victoria Island, Lagos.
+              4b Prince Kayode Akingbade Close, <br />Off Muri Okunola Street, <br />Victoria Island, Lagos.
             </p>
             <p className="text-xs text-gray-300 leading-relaxed">
-              24 Ajagba Street, off Binez Hotel Road, Immaculate Junction, Brass, Aba
+              24 Ajagba Street, <br />off Binez Hotel Road, <br />Immaculate Junction, <br />
+              Brass, Aba
             </p>
           </div>
 

@@ -27,7 +27,7 @@ export default function Hero() {
         </p>
       </div>
 
-      {/* Overlay gradient (optional, for readability) */}
+    
     </section>
   );
 }
