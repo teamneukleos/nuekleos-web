@@ -1,23 +1,14 @@
-// import DashboardShell from "@/components/dashboard/dashboard-shell";
-import { auth } from "@/auth";
-import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
-import OurPartner from "@/components/OurPartner";
-import PartnerWithUs from "@/components/PartnerWithUs";
-import Footer from "@/components/Footer";
+import ConditionalSections from "@/components/ConditionalSections";
+import ConditionalFooter from "@/components/CondtionalFooter";
 
-export default async function AppLayout ({ children }: {children: React.ReactNode}) {
-  const session = await auth();
-
-  if (!session) notFound();
-
+export default function HomeLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
+    <>
       <Navbar />
       {children}
-      <OurPartner />
-      <PartnerWithUs />
-      <Footer />
-    </div>
+      <ConditionalSections />
+      <ConditionalFooter />
+    </>
   );
 }

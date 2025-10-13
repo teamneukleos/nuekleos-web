@@ -1,4 +1,11 @@
+"use client";
+
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 const RunwayShowcase = () => {
+  const router = useRouter();
+
   return (
     <article className="w-full bg-white">
       {/* Content Container */}
@@ -27,10 +34,19 @@ const RunwayShowcase = () => {
             beautifully modelled and full of personality.
           </p>
 
-          <p className="text-sm md:text-sm text-gray-800 leading-relaxed mb-6">
+          <p className="text-sm md:text-sm text-gray-800 leading-relaxed mb-8">
             It was more than a showcase — it was a statement of potential, innovation, and the future of fashion.
           </p>
         </div>
+
+        {/* Back Button */}
+        <button
+          onClick={() => router.push("/stories")}
+          className="mt-10 flex items-center gap-2 bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-orange-700 transition"
+        >
+          <ArrowLeft size={16} />
+          Back to Stories
+        </button>
       </div>
     </article>
   );

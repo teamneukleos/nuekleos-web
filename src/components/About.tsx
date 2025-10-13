@@ -11,7 +11,7 @@ const About = () => {
           alt="About Ethnocentrique"
           className="w-full h-full object-cover"
         />
-        {/* Dark overlay for readability */}
+        {/* Dark overlay */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/40"></div>
       </div>
 
@@ -22,15 +22,48 @@ const About = () => {
           You create, we connect. <br />
           You imagine, we open doors.
         </h2>
-        <p className="text-base md:text-lg leading-relaxed text-gray-200">
-          We celebrate heritage by preserving traditional crafts, uplifting Indigenous art, 
-          and nurturing local creative ecosystems. Through youth-focused entrepreneurship 
-          and innovation, we transform creativity and culture into opportunity; building a 
-          future rooted in pride, dignity, and possibility for this generation — and the next.
+
+        {/* ✅ Mobile paragraph (sm screens) */}
+        <p className="block sm:hidden text-sm leading-relaxed text-gray-200">
+          We celebrate heritage by preserving traditional crafts,
+          uplifting Indigenous art, and nurturing local creative ecosystems.
+          Through youth-focused entrepreneurship and innovation, we transform
+          creativity and culture into opportunity — building a future rooted in
+          pride, dignity, and possibility for this generation and the next.
+        </p>
+
+        {/* ✅ Tablet paragraph (sm–md screens) */}
+        <p className="hidden sm:block md:hidden text-base leading-relaxed text-gray-200">
+          We celebrate heritage by preserving traditional crafts, uplifting
+          Indigenous art, and nurturing local creative ecosystems. Through
+          youth-focused entrepreneurship and innovation, we transform creativity
+          and culture into opportunity — building a future rooted in pride,
+          dignity, and possibility for this generation and the next.
+        </p>
+
+        {/* ✅ Medium desktop paragraph (md–lg screens) */}
+        <p className="hidden md:block lg:hidden text-base leading-relaxed text-gray-200">
+          We celebrate heritage by preserving traditional crafts,
+          uplifting Indigenous art, and nurturing local creative ecosystems.
+          Through youth-focused entrepreneurship and innovation, we transform
+          creativity and culture into opportunity — building a future rooted in
+          pride, dignity, and possibility for this generation and the next.
+        </p>
+
+        {/* ✅ Large desktop paragraph (lg and up) */}
+        <p className="hidden lg:block text-lg leading-relaxed text-gray-200">
+          We celebrate heritage by preserving traditional crafts,
+          uplifting Indigenous art, and nurturing local creative ecosystems.
+          Through youth-focused entrepreneurship and innovation, we transform
+          creativity and culture into opportunity — building a future rooted in
+          pride, dignity, and possibility for this generation and the next.
         </p>
 
         {/* Read More Button */}
-        <Link href="/about" className="inline-flex items-center gap-2 text-sm font-medium">
+        <Link
+          href="/about"
+          className="inline-flex items-center gap-2 text-sm font-medium"
+        >
           <span>Read More</span>
           <span className="p-1.5 bg-white rounded-sm">
             <ArrowRight className="text-orange-600" size={16} />

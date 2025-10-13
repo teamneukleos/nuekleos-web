@@ -1,4 +1,10 @@
+"use client";
+import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/navigation";
+
 const UnitedAction = () => {
+  const router = useRouter(); // <-- FIXED: add this line
+
   return (
     <article className="w-full bg-white">
       {/* Content Container */}
@@ -59,6 +65,14 @@ const UnitedAction = () => {
             a program but building the future of work and enterprise in Africa.
           </p>
         </div>
+
+        <button
+          onClick={() => router.push("/stories")}
+          className="mt-10 flex items-center gap-2 bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-orange-700 transition"
+        >
+          <ArrowLeft size={16} />
+          Back to Stories
+        </button>
       </div>
     </article>
   );

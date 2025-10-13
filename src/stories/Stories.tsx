@@ -9,17 +9,20 @@ const Stories = () => {
 
   const otherStories = [
     {
-      title: "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
+      title:
+        "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
       image: "/stories/reflect-realign.png",
       link: "/stories/reflect-realign",
     },
     {
-      title: "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
+      title:
+        "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
       image: "/stories/artisan-skills.png",
       link: "/stories/artisan-skills",
     },
     {
-      title: "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
+      title:
+        "Reflect. Realign. Reimagine: Co-Creating the Future of Work and Enterprise in Africa",
       image: "/stories/united-action.png",
       link: "/stories/united-action",
     },
@@ -28,6 +31,7 @@ const Stories = () => {
   return (
     <section className="w-full py-16 px-6 md:px-12 lg:px-16 bg-gray-50">
       <div className="max-w-7xl mx-auto">
+        {/* Featured Story */}
         <div className="flex flex-col md:flex-row mb-8 rounded-xl overflow-hidden shadow-lg bg-orange-600 md:max-h-[350px]">
           {/* Left: Image */}
           <div className="w-full md:w-2/5 h-64 md:h-auto">
@@ -55,19 +59,21 @@ const Stories = () => {
           </div>
         </div>
 
-        {/* Other Stories Grid - 3 columns */}
+        {/* Other Stories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {otherStories.map((story, index) => (
             <a
               key={index}
               href={story.link}
-              className={`group relative h-80 overflow-hidden shadow-lg block ${
-                index === 0
-                  ? 'rounded-l-xl'
-                  : index === otherStories.length - 1
-                  ? 'rounded-r-xl'
-                  : ''
-              }`}
+              className={`group relative h-80 overflow-hidden shadow-lg block
+                rounded-lg md:rounded-none
+                ${
+                  index === 0
+                    ? "md:rounded-l-xl"
+                    : index === otherStories.length - 1
+                    ? "md:rounded-r-xl"
+                    : ""
+                }`}
             >
               {/* Image */}
               <img
@@ -76,7 +82,7 @@ const Stories = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
 
-              {/* Gradient Overlay - Always visible */}
+              {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
               {/* Hover Overlay with Title */}

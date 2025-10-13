@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative w-full h-[100vh] flex items-center justify-start">
       {/* Background Image */}
       <Image
-        src="/initiative-hero.png" 
+        src="/initiative-hero.png"
         alt="Ethnocentrique initiatives"
         fill
         className="object-cover brightness-75"
@@ -20,14 +20,40 @@ export default function Hero() {
         <h1 className="text-3xl md:text-4xl font-bold leading-tight text-orange-600">
           Our Initiatives
         </h1>
-        <p className="mt-6 text-sm md:text-sm font-light leading-relaxed">
+
+        {/* ----------- MOBILE (<640px) ----------- */}
+        <p className="mt-6 text-xs font-light leading-relaxed block sm:hidden">
+          Our initiatives advance local production and 
+          strengthen communities by connecting people,
+          opportunities and resources. Each one is 
+          designed to unlock potential, drive growth, 
+          and showcase Africa&apos;s creativity.
+        </p>
+
+        {/* ----------- TABLET (≥640px <1024px) ----------- */}
+        <p className="mt-6 text-sm font-light leading-relaxed hidden sm:block md:hidden">
+          Our initiatives advance local production and strengthen <br />
+          communities by connecting people, opportunities and <br />
+          resources. Each one is designed to unlock potential, drive <br />
+          economic growth, and celebrate Africa&apos;s creative excellence.
+        </p>
+
+        {/* ----------- DESKTOP (≥1024px <1280px) ----------- */}
+        <p className="mt-6 text-sm md:text-sm font-light leading-relaxed hidden md:block xl:hidden">
           Our initiatives advance local production and strengthen <br /> communities by connecting people,
           opportunities and resources.<br /> Each one is designed to unlock potential, drive economic growth, <br /> 
           and showcase Africa's creative excellence.
         </p>
+
+        {/* ----------- LARGE DESKTOP (≥1280px) ----------- */}
+        <p className="mt-6 text-base font-light leading-relaxed hidden xl:block">
+          Our initiatives advance local production and strengthen communities by connecting people,
+          opportunities, and resources. Each one is designed to unlock potential, drive economic growth,
+          and showcase Africa&apos;s creative excellence.
+        </p>
       </div>
 
-        {/* Overlay gradient*/}
+      {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-black/40" />
     </section>
   );

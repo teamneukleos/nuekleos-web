@@ -16,7 +16,7 @@ const WhyWeDoIt = () => {
       {/* Content Grid */}
       <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
         {/* Image */}
-        <div className="order-2 lg:order-1">
+        <div className="order-1 lg:order-1">
           <img
             src="/certification.png"
             alt="Certificate presentation"
@@ -25,7 +25,7 @@ const WhyWeDoIt = () => {
         </div>
 
         {/* List of Reasons */}
-        <div className="order-1 lg:order-2 space-y-6">
+        <div className="order-2 lg:order-2 space-y-6">
           {reasons.map((reason, index) => (
             <div key={index} className="pb-4 border-b-2 border-orange-500">
               <p className="text-sm md:text-base leading-relaxed text-gray-800">
