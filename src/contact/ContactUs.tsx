@@ -40,7 +40,7 @@ export default function ContactUs() {
           <div className="max-w-2xl">
             {/* TEXT */}
             <div className="mb-10 md:mb-16">
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-10 leading-tight">
+              <h1 className="text-xl md:text-xl lg:text-xl sm:text-xl font-bold mb-6 md:mb-10 leading-tight mt-6">
                 Get in touch <br /> with us
               </h1>
               
@@ -135,10 +135,15 @@ export default function ContactUs() {
               Visit us
             </h3>
             <p className="text-gray-800 text-xs md:text-sm leading-relaxed">
-              4b Prince Kayode Akingbade Close, Off Muri Okunola Street, Victoria Island
+              4b Prince Kayode Akingbade Close, <br />
+              Off Muri Okunola Street, <br />
+              Victoria Island, Lagos.
             </p>
-            <p className="text-gray-800 text-xs md:text-sm leading-relaxed">
-              24 Ajagba Street, off Binez Hotel Road, Immaculate Junction, Brass, Aba
+            <p className="mt-4 text-gray-800 text-xs md:text-sm leading-relaxed">
+              24 Ajagba Street, <br />
+              off Binez Hotel Road, <br />
+              Immaculate Junction, <br />
+              Brass, Aba
             </p>
           </div>
 

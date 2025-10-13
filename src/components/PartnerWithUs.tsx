@@ -6,23 +6,39 @@ const PartnerWithUs = () => {
       <div className="max-w-6xl mx-auto rounded-[40px] p-6 sm:p-10 text-left bg-gradient-to-r from-[#EA6405] via-[#F9A107] to-[#8F9837] text-white">
         <h3 className="text-xl sm:text-2xl mb-4">Let’s hear from you</h3>
 
-        {/* Mobile paragraph */}
+        {/* ✅ Mobile paragraph (sm screens) */}
         <p className="mb-6 text-xs leading-relaxed text-left sm:hidden">
-          We're building a movement that uplifts local artisans, <br />empowers communities 
-          and celebrates heritage. <br />We’re sparking a movement where local artisans rise, 
-          communities thrive, and heritage takes its rightful place — <br />at the heart of progress. <br />
+          We're building a movement that uplifts local artisans, empowers communities
+          and celebrates heritage. We’re sparking a movement where local artisans rise,
+          communities thrive, and heritage takes its rightful place — at the heart of progress. <br />
           Join us in shaping the future of our local economy together.
         </p>
 
-        {/* Desktop paragraph */}
-        <p className="mb-6 text-sm sm:text-sm leading-relaxed text-left hidden sm:block">
-          We're building a movement that uplifts local artisans, empowers communities <br /> 
+        {/* ✅ Tablet paragraph (sm–md screens) */}
+        <p className="hidden sm:block md:hidden mb-6 text-sm leading-relaxed text-left">
+          We're building a movement that uplifts local artisans, empowers communities
+          and celebrates heritage. We’re sparking a movement where local artisans rise,
+          communities thrive, and heritage takes its rightful place — at the heart of progress.
+          Join us in shaping the future of our local economy together.
+        </p>
+
+        {/* ✅ Medium desktop paragraph (md–lg screens) */}
+        <p className="hidden md:block lg:hidden mb-6 text-sm leading-relaxed text-left">
+          We're building a movement that uplifts local artisans, empowers communities
+          and celebrates heritage. We’re sparking a movement where local artisans rise,
+          communities thrive, and heritage takes its rightful place — at the heart of progress.
+          Join us in shaping the future of our local economy together.
+        </p>
+
+        {/* ✅ Large desktop paragraph (lg and up) */}
+        <p className="hidden lg:block mb-6 text-sm leading-relaxed text-left">
+          We're building a movement that uplifts local artisans, empowers communities <br />
           and celebrates heritage. We’re sparking a movement where local artisans rise, <br />
           communities thrive, and heritage takes its rightful place — at the heart of progress. <br />
           Join us in shaping the future of our local economy together.
         </p>
 
-        {/* Email + Button */}
+        {/* ✅ Email + Button */}
         <form className="w-full max-w-md">
           <div className="flex items-center bg-white rounded-full p-1.5">
             <input

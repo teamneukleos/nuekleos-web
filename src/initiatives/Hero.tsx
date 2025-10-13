@@ -21,20 +21,35 @@ export default function Hero() {
           Our Initiatives
         </h1>
 
-        {/* Desktop Paragraph */}
-        <p className="mt-6 text-sm md:text-sm font-light leading-relaxed hidden md:block">
+        {/* ----------- MOBILE (<640px) ----------- */}
+        <p className="mt-6 text-xs font-light leading-relaxed block sm:hidden">
+          Our initiatives advance local production and 
+          strengthen communities by connecting people,
+          opportunities and resources. Each one is 
+          designed to unlock potential, drive growth, 
+          and showcase Africa&apos;s creativity.
+        </p>
+
+        {/* ----------- TABLET (≥640px <1024px) ----------- */}
+        <p className="mt-6 text-sm font-light leading-relaxed hidden sm:block md:hidden">
+          Our initiatives advance local production and strengthen <br />
+          communities by connecting people, opportunities and <br />
+          resources. Each one is designed to unlock potential, drive <br />
+          economic growth, and celebrate Africa&apos;s creative excellence.
+        </p>
+
+        {/* ----------- DESKTOP (≥1024px <1280px) ----------- */}
+        <p className="mt-6 text-sm md:text-sm font-light leading-relaxed hidden md:block xl:hidden">
           Our initiatives advance local production and strengthen <br /> communities by connecting people,
           opportunities and resources.<br /> Each one is designed to unlock potential, drive economic growth, <br /> 
           and showcase Africa's creative excellence.
         </p>
 
-        {/* Mobile Paragraph */}
-        <p className="mt-6 text-sm md:text-sm font-light leading-relaxed block md:hidden">
-          Our initiatives advance local production and strengthen <br /> 
-          communities by connecting people, opportunities and <br /> 
-          resources. Each one is designed to unlock potential, <br /> 
-          drive economic growth, and showcase Africa&apos;s creative <br /> 
-          excellence.
+        {/* ----------- LARGE DESKTOP (≥1280px) ----------- */}
+        <p className="mt-6 text-base font-light leading-relaxed hidden xl:block">
+          Our initiatives advance local production and strengthen communities by connecting people,
+          opportunities, and resources. Each one is designed to unlock potential, drive economic growth,
+          and showcase Africa&apos;s creative excellence.
         </p>
       </div>
 

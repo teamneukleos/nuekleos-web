@@ -1,4 +1,5 @@
 "use client";
+
 import { ArrowRight, ArrowUp, ArrowDown } from "lucide-react";
 import { useState } from "react";
 
@@ -40,7 +41,7 @@ const Hero = () => {
   const currentPost = blogPosts[currentIndex];
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-start text-white">
+    <section className="relative h-screen w-full flex flex-col md:items-start md:justify-center justify-start text-white">
       {/* Background Video */}
       <video
         autoPlay
@@ -57,8 +58,8 @@ const Hero = () => {
       <div className="absolute top-0 left-0 w-full h-full bg-black/40 -z-10"></div>
 
       {/* Hero Content */}
-      <div className="px-6 md:px-16 max-w-2xl space-y-6 mt-32">
-        <h1 className="text-3xl md:text-4xl font-bold leading-tight">
+      <div className="px-6 md:px-16 max-w-2xl space-y-6 mt-40 md:mt-0 flex-grow md:flex-grow-0">
+        <h1 className="text-2xl md:text-4xl font-bold leading-tight">
           We enable African <br />
           Markets to thrive <br />
           at home and on <br />
@@ -76,21 +77,24 @@ const Hero = () => {
         </a>
       </div>
 
-      {/* Desktop - Floating Blog Card with Navigation */}
-      <div className="absolute bottom-8 right-8 hidden md:flex items-center gap-4">
+      {/* Spacer for layout on desktop */}
+      <div className="hidden md:block"></div>
+
+      {/* Blog Card with Navigation */}
+      <div className="absolute bottom-8 right-6 md:right-8 flex items-center gap-4">
         {/* Blog Card */}
         <a
           href={currentPost.link}
-          className="bg-white/50 backdrop-blur-sm rounded-lg shadow-lg p-4 max-w-sm flex gap-3 items-start hover:bg-white/70 transition"
+          className={`bg-white/50 backdrop-blur-sm rounded-lg shadow-lg p-3 flex gap-2 items-start hover:bg-white/70 transition w-[250px] md:w-[350px]`}
         >
           <img
             src={currentPost.image}
             alt={currentPost.title}
-            className="w-20 h-20 object-cover rounded"
+            className="object-cover rounded flex-shrink-0 w-16 h-16 md:w-20 md:h-20"
           />
           <div className="flex-1">
             <p className="text-xs text-orange-600 font-semibold mb-1">BLOG</p>
-            <h3 className="text-sm font-bold text-gray-900 mb-1 line-clamp-2">
+            <h3 className="text-xs md:text-sm font-bold text-gray-900 mb-1 line-clamp-2">
               {currentPost.title}
             </h3>
             <p className="text-xs text-gray-600 line-clamp-2">
@@ -111,11 +115,11 @@ const Hero = () => {
 
           {/* Dots indicator */}
           <div className="flex flex-col items-center gap-1 py-2">
-            {blogPosts.map((_, index) => (
+            {blogPosts.map((_, i) => (
               <div
-                key={index}
+                key={i}
                 className={`w-1.5 h-1.5 rounded-full ${
-                  index === currentIndex ? "bg-white" : "bg-gray-400"
+                  i === currentIndex ? "bg-white" : "bg-gray-400"
                 }`}
               />
             ))}
@@ -127,61 +131,6 @@ const Hero = () => {
             aria-label="Next post"
           >
             <ArrowDown size={16} className="text-white" />
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile - Blog Card with Navigation beside it */}
-      <div className="md:hidden absolute bottom-4 right-4 flex items-center gap-3">
-        {/* Blog Card */}
-        <a
-          href={currentPost.link}
-          className="bg-white/50 backdrop-blur-sm rounded-lg shadow-lg p-3 w-72 h-24 flex gap-2 items-start hover:bg-white/70 transition"
-        >
-          <img
-            src={currentPost.image}
-            alt={currentPost.title}
-            className="w-16 h-16 object-cover rounded flex-shrink-0"
-          />
-          <div className="flex-1 min-w-0">
-            <p className="text-xs text-orange-600 font-semibold mb-1">BLOG</p>
-            <h3 className="text-xs font-bold text-gray-900 mb-1 line-clamp-2">
-              {currentPost.title}
-            </h3>
-            <p className="text-xs text-gray-700 line-clamp-2">
-              {currentPost.description}
-            </p>
-          </div>
-        </a>
-
-        {/* Navigation Controls - Vertical beside card */}
-        <div className="flex flex-col items-center gap-2">
-          <button
-            onClick={handlePrev}
-            className="p-2 rounded hover:bg-white/40 transition"
-            aria-label="Previous post"
-          >
-            <ArrowUp size={14} className="text-white" />
-          </button>
-
-          {/* Dots indicator */}
-          <div className="flex flex-col items-center gap-1 py-1">
-            {blogPosts.map((_, index) => (
-              <div
-                key={index}
-                className={`w-1.5 h-1.5 rounded-full ${
-                  index === currentIndex ? "bg-white" : "bg-gray-400"
-                }`}
-              />
-            ))}
-          </div>
-
-          <button
-            onClick={handleNext}
-            className="p-2 rounded hover:bg-white/40 transition"
-            aria-label="Next post"
-          >
-            <ArrowDown size={14} className="text-white" />
           </button>
         </div>
       </div>
