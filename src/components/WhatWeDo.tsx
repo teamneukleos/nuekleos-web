@@ -32,7 +32,7 @@ const WhatWeDo = () => {
       title: "Strategic Partnerships & Collaborations",
       description:
         "Providing strategic guidance and partnership opportunities to enhance operational efficiency for SMEs, to open new markets.",
-      bg: "bg-lime-600",
+      bg: "bg-[#8F9837]",
       textColor: "text-white",
       link: "/work#strategic-partnership",
     },
