@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+     "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint --fix",
     "seed": "prisma db seed -- --environment development",
@@ -15,7 +15,7 @@
     "migrate:reset": "prisma migrate reset",
     "migrate:deploy": "prisma migrate deploy",
     "type-check": "tsc --noemit",
-    "infra": "docker compose -p schoolwave up -d",
+    "infra": "docker compose -p ethnocentrique up -d",
     "test": "jest",
     "cypress:install": "cypress install",
     "cypress:open": "cypress open"
