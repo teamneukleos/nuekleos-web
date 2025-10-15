@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="relative w-full h-[100vh] flex items-center justify-start">
       {/* Background Image */}
       <Image
-        src="/work-hero.png"
+        src="/work-hero.jpg"
         alt="Ethnocentrique About Us"
         fill
         className="object-cover brightness-75"
