@@ -6,6 +6,13 @@ import { User as UserType } from "@prisma/client";
 
 export const { handlers: { GET, POST }, auth } = NextAuth({
   trustHost: true,
+  pages: {
+    signIn: '/login',
+  },
+  session: {
+    strategy: 'jwt',
+  },
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       id: "credentials",
@@ -15,7 +22,7 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
       },
       async authorize ({ username, password }) {
         try {
-          if (!password) return null;
+          if (!password || !username) return null;
 
           const user = await prisma.user.findFirst({
             where: {
@@ -28,10 +35,14 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
           if (!user) return null;
           if (!(await compare(password as string, user.password))) return null;
 
-          return user;
+          return {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+          };
         } catch (error) {
-          console.error(error);
-
+          console.error('Auth error:', error);
           return null;
         }
       },
@@ -56,7 +67,6 @@ export const { handlers: { GET, POST }, auth } = NextAuth({
           name: token.name,
           email: token.email,
         },
-        permissions: token.permissions,
       };
     },
   },
