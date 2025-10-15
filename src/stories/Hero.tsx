@@ -33,7 +33,7 @@ export default function Hero() {
         className="
           md:hidden relative 
           w-full 
-          h-[55vh]     
+          h-[95vh]     
           flex items-end justify-start 
           overflow-hidden 
           bg-black
@@ -41,7 +41,7 @@ export default function Hero() {
         style={{
           backgroundImage: 'url(/stories-hero.png)',
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "left top",
           backgroundRepeat: "no-repeat",
         }}
       >

@@ -54,12 +54,12 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {open && (
-        <div className={`absolute top-16 right-6 p-6 rounded-lg space-y-4 md:hidden ${isStoriesPage ? 'bg-white shadow-lg' : 'bg-white'}`}>
+        <div className={`absolute top-16 right-6 p-6 rounded-lg space-y-4 md:hidden ${isStoriesPage ? 'bg-white shadow-lg' : 'bg-white shadow-lg'}`}>
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`block transition ${isStoriesPage ? 'text-white hover:text-orange-600' : 'text-white hover:text-orange-400'}`}
+              className={`block transition ${isStoriesPage ? 'text-gray-900 hover:text-orange-600' : 'text-gray-900 hover:text-orange-600'}`}
               onClick={() => setOpen(false)}
             >
               {link.name}

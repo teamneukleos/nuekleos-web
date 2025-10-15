@@ -53,11 +53,11 @@ export default function DashboardShell ({ title, children, hideLogout, logoutRed
         <FaChevronRight className="size-3" />
       </a>
       <div className="hidden lg:pb-5 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col border-r border-border">
-        <div className="flex items-center px-6 py-4 border-b border-border bg-gray-600">
+        <div className="flex items-center px-6 py-4 border-b border-border">
           <img
-            src={"/logo.svg"}
+            src={"/logo-black.svg"}
             alt="Ethnocentrique"
-            className="h-86 w-auto"
+            className="h-8 w-auto"
           />
         </div>
         <Sidebar

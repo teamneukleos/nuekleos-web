@@ -13,13 +13,19 @@ export const metadata: Metadata = {
   title: "Ethnocentrique",
   description: "We enable African Markets to thrive at home and on the global stage",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/logo-icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo-icon.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" }
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo-icon.png",
   },
-  openGraph: {
-    title: "Ethnocentrique",
-    description: "We enable African Markets to thrive at home and on the global stage",
-    images: "/logo.svg",
-  },
+  // openGraph: {
+  //   title: "Ethnocentrique",
+  //   description: "We enable African Markets to thrive at home and on the global stage",
+  //   images: "/favicon.ico",
+  // },
 };
 
 export default function RootLayout ({ children }: Readonly<{
@@ -27,6 +33,11 @@ export default function RootLayout ({ children }: Readonly<{
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/logo-icon.png" type="image/png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </head>
       <body className={sora.className}>
         <ReactQueryProvider>
           {children}
