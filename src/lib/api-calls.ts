@@ -72,7 +72,7 @@ export const getPosts = async (page: number = 1, limit: number = 10): Promise<IA
 };
 
 export const getPublishedPosts = async (): Promise<IApiResponse<IPost[]>> => {
-  return handleApiCalls(await fetch(`${process.env.NEXT_PUBLIC_BROWSER_URL}/api/posts/published`, { method: "GET" }));
+  return handleApiCalls(await fetch(`${process.env.NEXT_PUBLIC_BROWSER_URL}api/posts/published`, { method: "GET", cache: "no-store" }));
 };
 
 export const getPostBySlug = async (slug: string): Promise<IApiResponse<IPost>> => {
