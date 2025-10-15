@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
-import { postSchema } from "@/lib/models/validation-schema";
-import { auth } from "@/auth";
+
+export const revalidate = 0; // disables ISR caching
+export const dynamic = "force-dynamic"; // ensures fresh data every call
 
 export async function GET () {
   try {
