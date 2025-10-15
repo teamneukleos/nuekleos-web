@@ -54,7 +54,7 @@ const Founders: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-4 max-w-6xl">
         {/* Left: Main Founder */}
         <div
-          className="relative overflow-hidden h-[500px] md:h-[600px] w-full cursor-pointer"
+          className="relative overflow-hidden h-[300px] md:h-[600px] w-full cursor-pointer"
           onMouseEnter={() => setHoveredFounder(founders[0])}
           onMouseLeave={() => setHoveredFounder(null)}
         >
