@@ -5,7 +5,8 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
-} from "@tanstack/react-table";import {
+} from "@tanstack/react-table";
+import {
   Table,
   TableBody,
   TableCell,
@@ -20,7 +21,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 
-export function ProductTable<TData, TValue> ({
+export function DataTable<TData, TValue> ({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -31,7 +32,7 @@ export function ProductTable<TData, TValue> ({
   });
 
   return (
-    <div className="rounded-md ">
+    <div className="rounded-md">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -68,7 +69,7 @@ export function ProductTable<TData, TValue> ({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+                No users found.
               </TableCell>
             </TableRow>
           )}
@@ -77,3 +78,4 @@ export function ProductTable<TData, TValue> ({
     </div>
   );
 }
+

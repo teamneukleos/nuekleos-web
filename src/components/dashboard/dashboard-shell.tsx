@@ -4,6 +4,7 @@ import { FaChevronRight } from "react-icons/fa";
 import React, { BaseSyntheticEvent, ReactNode, useState } from "react";
 import { Sidebar, SidebarMobile } from ".";
 import { useRouter } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 export interface Link {
   name: string;
@@ -21,9 +22,19 @@ export default function DashboardShell ({ title, children, hideLogout, logoutRed
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const router = useRouter();
 
-  const logout = (e: BaseSyntheticEvent) => {
+  const logout = async (e: BaseSyntheticEvent) => {
     e.preventDefault();
-    if (logoutRedirectTo) router.push(logoutRedirectTo);
+    try {
+      await signOut({
+        redirect: false,
+        callbackUrl: logoutRedirectTo
+      });
+      router.push(logoutRedirectTo);
+    } catch (error) {
+      console.error("Logout error:", error);
+      // Fallback: redirect anyway
+      router.push(logoutRedirectTo);
+    }
   };
 
   return (
@@ -41,7 +52,14 @@ export default function DashboardShell ({ title, children, hideLogout, logoutRed
       }} className="no-underline border border-gray-800 border-solid rounded-tr-xl rounded-br-xl grid items-center absolute bg-white py-1.5 pr-1 -left-0.5 bottom-24 shadow-lg lg:hidden">
         <FaChevronRight className="size-3" />
       </a>
-      <div className= "hidden lg:pb-5 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col border-r border-border justify-between">
+      <div className="hidden lg:pb-5 lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col border-r border-border">
+        <div className="flex items-center px-6 py-4 border-b border-border bg-gray-600">
+          <img
+            src={"/logo.svg"}
+            alt="Ethnocentrique"
+            className="h-86 w-auto"
+          />
+        </div>
         <Sidebar
           title={title}
           links={links}

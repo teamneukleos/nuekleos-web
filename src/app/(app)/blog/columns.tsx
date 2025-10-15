@@ -106,17 +106,28 @@ const HandleDelete = ({ post }: DeleteProps) => {
 
 export const columns: ColumnDef<IPost>[] = [
   {
+    id: "serialNumber",
+    header: "S/N",
+    cell: ({ row }) => {
+      return <span className="text-sm text-gray-600">{row.index + 1}</span>;
+    },
+  },
+  {
     accessorKey: "title",
     header: "Title",
     cell: ({ row }) => (
-      <div className="max-w-xs truncate">{row.original.title}</div>
+      <div className="max-w-[200px] truncate" title={row.original.title}>
+        {row.original.title}
+      </div>
     ),
   },
   {
     accessorKey: "slug",
     header: "Slug",
     cell: ({ row }) => (
-      <div className="max-w-xs truncate text-sm text-gray-600">{row.original.slug}</div>
+      <div className="max-w-[150px] truncate text-sm text-gray-600" title={row.original.slug}>
+        {row.original.slug}
+      </div>
     ),
   },
   {
@@ -126,7 +137,7 @@ export const columns: ColumnDef<IPost>[] = [
       <span
         className={`px-2 py-1 text-xs rounded-full ${
           row.original.published
-            ? "bg-green-100 text-green-800"
+            ? "bg-orange-100 text-orange-800"
             : "bg-yellow-100 text-yellow-800"
         }`}
       >

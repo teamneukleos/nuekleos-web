@@ -179,7 +179,7 @@ const NewBlogPostForm = () => {
                         type="checkbox"
                         checked={field.value}
                         onChange={field.onChange}
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
                       />
                       <FormLabel className="!mt-0 cursor-pointer">Publish immediately</FormLabel>
                     </div>
@@ -193,7 +193,7 @@ const NewBlogPostForm = () => {
               <Button 
                 type="submit"
                 disabled={form.formState.isSubmitting}
-                className="text-sm text-white bg-blue-500 py-2 px-6 border border-1 border-blue rounded-sm hover:bg-blue-600"
+                className="text-sm text-white bg-orange-600 py-2 px-6 border border-1 border-orange rounded-sm hover:bg-orange-700"
               >
                 {form.formState.isSubmitting ? "Creating..." : "Create Blog Post"}
               </Button>

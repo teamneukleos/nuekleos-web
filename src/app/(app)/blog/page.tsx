@@ -8,16 +8,24 @@ import { BlogPostTable } from "./data-table";
 import NewBlogPostForm from "@/components/NewBlogPostForm";
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { PlusCircle } from "lucide-react";
+import { PlusCircle, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import { IPagination } from "@/lib/models/models";
 
 export default function BlogPage () {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState<IPagination | null>(null);
+  const pageSize = 10;
+
   const { data: posts, isLoading, error } = useQuery({
-    queryKey: [QUERY_KEY.GET_ALL_POSTS],
+    queryKey: [QUERY_KEY.GET_ALL_POSTS, currentPage],
     queryFn: async () => {
-      const response = await getPosts();
+      const response = await getPosts(currentPage, pageSize);
 
       if (response.data) {
-        return response.data;
+        setPagination(response.data.pagination);
+        console.log("res:", response);
+        return response.data.data;
       }
 
       throw new Error("Failed to fetch posts");
@@ -49,7 +57,7 @@ export default function BlogPage () {
         </div>
         <Sheet>
           <SheetTrigger asChild>
-            <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+            <Button className="bg-orange-600 hover:bg-orange-700 text-white">
               <PlusCircle className="mr-2 h-4 w-4" />
               New Blog Post
             </Button>
@@ -65,6 +73,56 @@ export default function BlogPage () {
 
       <div className="bg-white rounded-lg shadow">
         <BlogPostTable columns={columns} data={posts || []} />
+        
+        {/* Pagination */}
+        {pagination && pagination.totalPages > 1 && (
+          <div className="flex items-center justify-between px-6 py-4 border-t border-gray-200">
+            <div className="text-sm text-gray-700">
+              Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, pagination.totalCount)} of {pagination.totalCount} posts
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={!pagination.hasPrev}
+                className="flex items-center"
+              >
+                <ChevronLeft className="h-4 w-4 mr-1" />
+                Previous
+              </Button>
+              
+              <div className="flex items-center space-x-1">
+                {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
+                  const pageNum = i + 1;
+                  return (
+                    <Button
+                      key={pageNum}
+                      variant={currentPage === pageNum ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setCurrentPage(pageNum)}
+                      className={currentPage === pageNum ? "bg-orange-600 hover:bg-orange-700" : ""}
+                    >
+                      {pageNum}
+                    </Button>
+                  );
+                })}
+              </div>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, pagination.totalPages))}
+                disabled={!pagination.hasNext}
+                className="flex items-center"
+              >
+                Next
+                <ChevronRight className="h-4 w-4 ml-1" />
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -15,6 +15,13 @@ export function Sidebar ({ logout, links, title, hideLogout }: SidebarProps) {
   return (
     <div className="flex grow flex-col justify-between bg-white relative px-3 py-4">
       <div className="space-y-3">
+        <div className="px-4 pb-4 border-b border-border bg-gray-800 lg:hidden">
+          <img
+            src={"/logo.svg"}
+            alt="Ethnocentrique"
+            className="h-8 w-auto"
+          />
+        </div>
         <div className="px-4">
           {
             title && (
@@ -41,7 +48,7 @@ export function Sidebar ({ logout, links, title, hideLogout }: SidebarProps) {
             <SidebarItem
               href="#"
               name="Logout"
-              icon={<IoLogOutOutline className="mr-2 w-6 h-6" />}
+              icon={<IoLogOutOutline className="mr-2 w-6 h-6 text-orange-600" />}
               onClick={logout}
             />
           )

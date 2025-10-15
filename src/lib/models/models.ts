@@ -73,11 +73,17 @@ export interface IPost {
   updatedAt: string;
 }
 
+export interface IPostWithPagination {
+  data: IPost[];
+  pagination: IPagination;
+}
+
 export interface IUser {
   id: string;
   name: string;
   email: string;
   role: string;
+  is_inbuilt: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -96,4 +102,26 @@ export interface ITag {
   slug: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface IUserWithCount {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  is_inbuilt: boolean;
+  createdAt: string;
+  updatedAt: string;
+  _count: {
+    posts: number;
+  };
+}
+
+export interface IPagination {
+  page: number;
+  limit: number;
+  totalCount: number;
+  totalPages: number;
+  hasNext: boolean;
+  hasPrev: boolean;
 }

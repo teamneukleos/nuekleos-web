@@ -25,7 +25,7 @@ const Navbar = () => {
       <a href="/">
         <div className="flex items-center">
           <img 
-            src={isStoriesPage ? "/logo-black.svg" : "/logo.svg"}
+            src={isStoriesPage ? "/logo.svg" : "/logo.svg"}
             alt="Ethnocentrique" 
             className="h-6 w-auto"
           />
@@ -54,12 +54,12 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {open && (
-        <div className={`absolute top-16 right-6 p-6 rounded-lg space-y-4 md:hidden ${isStoriesPage ? 'bg-white shadow-lg' : 'bg-black bg-opacity-90'}`}>
+        <div className={`absolute top-16 right-6 p-6 rounded-lg space-y-4 md:hidden ${isStoriesPage ? 'bg-white shadow-lg' : 'bg-white'}`}>
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className={`block transition ${isStoriesPage ? 'text-gray-900 hover:text-orange-600' : 'text-white hover:text-orange-400'}`}
+              className={`block transition ${isStoriesPage ? 'text-white hover:text-orange-600' : 'text-white hover:text-orange-400'}`}
               onClick={() => setOpen(false)}
             >
               {link.name}

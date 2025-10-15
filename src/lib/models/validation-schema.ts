@@ -74,3 +74,22 @@ export const updatePostSchema = z.object({
   categoryIds: z.array(z.string()).optional(),
   tagIds: z.array(z.string()).optional(),
 });
+
+export const userSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters long" })
+    .max(100, { message: "Name must be at most 100 characters long" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
+  role: z.enum(["ADMIN", "EDITOR", "USER"], { message: "Please select a valid role" }),
+  is_inbuilt: z.boolean().default(false),
+});
+
+export const updateUserSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters long" })
+    .max(100, { message: "Name must be at most 100 characters long" })
+    .optional(),
+  email: z.string().email({ message: "Please enter a valid email address" }).optional(),
+  password: z.string().min(6, { message: "Password must be at least 6 characters long" }).optional(),
+  role: z.enum(["ADMIN", "EDITOR", "USER"], { message: "Please select a valid role" }).optional(),
+  is_inbuilt: z.boolean().optional(),
+});

@@ -21,6 +21,7 @@ model User {
   email     String   @unique
   password  String   // hash
   role      String     @default("USER") // ADMIN, EDITOR
+  is_inbuilt Boolean  @default(false) // true for seeded users
   posts     Post[]   @relation("AuthorPosts")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

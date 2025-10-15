@@ -1,4 +1,4 @@
-import * as fs from "fs/promises";
+// import * as fs from "fs/promises";
 import { ParseArgsConfig } from "util";
 import { PrismaClient } from "@prisma/client";
 import { parseArgs } from "node:util";
@@ -11,9 +11,10 @@ const config: ParseArgsConfig = { options: { environment: { type: "string" } } }
 async function seedUsers () {
   const superAdmin =  {
     name: "Super Admin",
-    email: "neukloes.super.admin@testmail.com",
+    email: "super.admin@ethnocentrique.com",
     password: "secret",
-    role: USER_ROLES.ADMIN
+    role: USER_ROLES.ADMIN,
+    is_inbuilt: true
   };
 
   await prisma.user.upsert(
@@ -21,7 +22,8 @@ async function seedUsers () {
       where: { email: superAdmin.email },
       update: {
         name: superAdmin.name,
-        role: superAdmin.role
+        role: superAdmin.role,
+        is_inbuilt: superAdmin.is_inbuilt
       },
       create: {
         ...superAdmin,
@@ -52,6 +54,7 @@ async function seedDev () {
  */
 async function seedProd () {
   try {
+    await seedUsers();
   } catch (error) {
     console.error("Error seeding data:", error);
   } finally {
