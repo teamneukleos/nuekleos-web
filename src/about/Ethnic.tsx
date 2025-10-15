@@ -34,10 +34,10 @@ export default function Ethnic() {
           {/* Right Logo */}
           <div className="flex justify-end">
             <Image
-              src="/logo-icon.svg"
+              src="/logo-icon(1).png"
               alt="Ethnocentrique Logo Icon"
-              width={500}
-              height={500}
+              width={250}
+              height={250}
               className="object-contain"
             />
           </div>
@@ -85,10 +85,10 @@ export default function Ethnic() {
           {/* ✅ Logo below text on mobile */}
           <div className="mt-8 flex justify-start">
             <Image
-              src="/logo-icon.svg"
+              src="/logo-icon(1).png"
               alt="Ethnocentrique Logo Icon"
-              width={200}
-              height={200}
+              width={150}
+              height={150}
               className="object-contain"
             />
           </div>
@@ -112,7 +112,7 @@ export default function Ethnic() {
           <div>
             {/* Mobile paragraph */}
             <p className="block sm:hidden text-sm leading-relaxed">
-              At Ethnocentrique, we celebrate showcasing Africa’s creative excellence.
+              At Ethnocentrique, we celebrate showcasing Africa’s creative excellence. 
               Preserving the knowledge of Indigenous crafts, supporting local artisans,
               and turning Africa’s creativity into opportunities for economic growth,
               innovation, and global relevance.
