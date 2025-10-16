@@ -26,7 +26,7 @@ const MarketAccessFacilitation = () => {
               <h2 className="text-3xl md:text-2xl font-semibold text-white mb-4">
                 Market Access Facilitation
               </h2>
-              <p className="text-xl md:text-lg text-white leading-relaxed">
+              <p className="text-sm md:text-sm text-white leading-relaxed">
                 We connect creatives to local and global markets <br />
                 through showcases, buyer linkages, and digital <br />
                 platforms, boosting sales, visibility, and influence, <br />
