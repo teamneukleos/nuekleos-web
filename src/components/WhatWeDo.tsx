@@ -1,5 +1,5 @@
 "use client";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 const WhatWeDo = () => {
@@ -46,36 +46,45 @@ const WhatWeDo = () => {
       </h2>
 
       {/* Cards Container */}
-      <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scrollbar-hide">
-        <div className="flex gap-6 min-w-max">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`${service.bg} ${service.textColor} p-8 flex flex-col justify-end min-h-[400px] w-[350px] md:w-[300px] lg:w-[350px]`}
-            >
-              <div className="mb-10">
-                <h3 className="text-xl md:text-xl font-semibold mb-4 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-sm md:text-sm leading-relaxed opacity-90">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Smooth link */}
-              <Link
-                href={service.link}
-                scroll={true}
-                className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
+      <div className="relative">
+        <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scrollbar-hide relative">
+          <div className="flex gap-6 min-w-max">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`${service.bg} ${service.textColor} p-8 flex flex-col justify-end min-h-[400px] w-[350px] md:w-[300px] lg:w-[350px]`}
               >
-                Read More
-                <ArrowUpRight
-                  size={18}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </Link>
-            </div>
-          ))}
+                <div className="mb-10">
+                  <h3 className="text-xl md:text-xl font-semibold mb-4 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm md:text-sm leading-relaxed opacity-90">
+                    {service.description}
+                  </p>
+                </div>
+                {/* Smooth link */}
+                <Link
+                  href={service.link}
+                  scroll={true}
+                  className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
+                >
+                  Read More
+                  <ArrowUpRight
+                    size={18}
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </Link>
+              </div>
+            ))}
+          </div>
+          {/* Swipe (mobile) */}
+          <div className="md:hidden absolute -bottom-2 right-2">
+            <img
+              src="/swipe-icon.png"
+              alt="Swipe right"
+              className="w-7 h-7 opacity-80 animate-pulse"
+            />
+          </div>
         </div>
       </div>
     </section>

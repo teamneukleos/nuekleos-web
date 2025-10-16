@@ -25,7 +25,7 @@ const founders: Founder[] = [
   {
     name: "OLAJIDE JOHN",
     role: "Chief Finance Officer",
-    bio: "Olajide is a Professional Accountant and “C” class Finance Executive with over 15 years’ experience as a CFO. He is the Lead Partner of Crystal Opal Consulting – an MSME consulting firm with expertise in Business Planning (Research & Feasibility Studies), Financial Modelling & Valuation, Financial Accounting & Reporting Systems, Financial Management Services, Tax Management & Advisory Services, Data Analysis & Science Services, Business Process Re-engineering, Digital Marketing, Change and Performance Management System using Balanced Score Card.",
+    bio: "Olajide is a Professional Accountant and class Finance Executive with over 15 years' experience as a CFO. He is the Lead Partner of Crystal Opal Consulting – an MSME consulting firm with expertise in Business Planning (Research & Feasibility Studies), Financial Modelling & Valuation, Financial Accounting & Reporting Systems, Financial Management Services, Tax Management & Advisory Services, Data Analysis & Science Services, Business Process Re-engineering, Digital Marketing, Change and Performance Management System using Balanced Score Card.",
     image: "/founders/cfo.png",
   },
   {
@@ -57,6 +57,7 @@ const Founders: React.FC = () => {
           className="relative overflow-hidden h-[300px] md:h-[600px] w-full cursor-pointer"
           onMouseEnter={() => setHoveredFounder(founders[0])}
           onMouseLeave={() => setHoveredFounder(null)}
+          onClick={() => setHoveredFounder(founders[0])}
         >
           <Image
             src={founders[0].image}
@@ -74,6 +75,7 @@ const Founders: React.FC = () => {
               className="relative overflow-hidden h-[240px] md:h-[295px] w-full cursor-pointer"
               onMouseEnter={() => setHoveredFounder(founder)}
               onMouseLeave={() => setHoveredFounder(null)}
+              onClick={() => setHoveredFounder(founder)}
             >
               <Image
                 src={founder.image}
@@ -88,7 +90,10 @@ const Founders: React.FC = () => {
 
       {/* Hover Overlay Modal */}
       {hoveredFounder && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center pointer-events-none">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center cursor-pointer"
+          onClick={() => setHoveredFounder(null)}
+        >
           <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[480px]">
             <Image
               src={hoveredFounder.image}
