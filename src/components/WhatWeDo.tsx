@@ -1,8 +1,31 @@
 "use client";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const WhatWeDo = () => {
+  const [showSwipeIcon, setShowSwipeIcon] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowSwipeIcon(entry.isIntersecting);
+      },
+      { threshold: 0.7 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const services = [
     {
       title: "Business Development",
@@ -39,7 +62,7 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-12 lg:px-16 bg-gray-50">
+    <section ref={sectionRef} className="py-16 px-6 md:px-12 lg:px-16 bg-gray-50">
       {/* Section Title */}
       <h2 className="text-xl md:text-sm mb-10 uppercase tracking-wide">
         What We Do
@@ -77,16 +100,19 @@ const WhatWeDo = () => {
               </div>
             ))}
           </div>
-          {/* Swipe (mobile) */}
-          <div className="md:hidden absolute -bottom-2 right-2">
-            <img
-              src="/swipe-icon.png"
-              alt="Swipe right"
-              className="w-7 h-7 opacity-80 animate-pulse"
-            />
-          </div>
         </div>
       </div>
+
+      {/* Swipe icon - only shows when section is visible */}
+      {showSwipeIcon && (
+        <div className="md:hidden fixed bottom-20 right-6 z-10">
+          <img
+            src="/swipe-icon.png"
+            alt="Swipe right"
+            className="w-7 h-7 opacity-80"
+          />
+        </div>
+      )}
     </section>
   );
 };
