@@ -104,7 +104,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <a
-                  href="mailto:akinbobola86@gmail.com"
+                  href="mailto:info@ethnocentrique.com"
                   className="flex items-center gap-2 hover:text-white transition"
                 >
                   <Mail size={16} /> info@ethnocentrique.com
