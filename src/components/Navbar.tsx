@@ -36,7 +36,7 @@ const Navbar = () => {
       <ul className="hidden md:flex space-x-6 text-sm font-normal">
         {navLinks.map((link) => (
           <li key={link.name}>
-            <a href={link.href} className={`transition ${isStoriesPage ? 'hover:text-orange-600' : 'hover:text-orange-400'}`}>
+            <a href={link.href} className={`transition ${isStoriesPage ? 'hover:text-orange-600 text-white' : 'hover:text-orange-400'}`}>
               {link.name}
             </a>
           </li>

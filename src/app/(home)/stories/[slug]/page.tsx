@@ -171,7 +171,7 @@ export default function StoryPage() {
         </div> */}
       </article>
 
-      <Footer />
+      {/* <Footer /> */}
     </main>
   );
 }

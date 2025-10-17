@@ -21,6 +21,7 @@ import { createPost } from "@/lib/api-calls";
 import { useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEY } from "@/lib/rbac";
 import TipTapEditor from "./TipTapEditor";
+import ImageUpload from "./ImageUpload";
 
 const NewBlogPostForm = () => {
   const { toast } = useToast();
@@ -141,9 +142,13 @@ const NewBlogPostForm = () => {
               name="coverImage"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel>Cover Image URL (Optional)</FormLabel>
+                  <FormLabel>Cover Image (Optional)</FormLabel>
                   <FormControl>
-                    <Input placeholder="https://example.com/image.jpg" {...field} />
+                    <ImageUpload
+                      value={field.value}
+                      onChange={field.onChange}
+                      disabled={form.formState.isSubmitting}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

@@ -28,6 +28,7 @@ import {
   ImageIcon,
 } from "lucide-react";
 import { Button } from "./ui/button";
+import ImageUploadModal from "./ImageUploadModal";
 
 interface TipTapEditorProps {
   content: string;
@@ -71,12 +72,8 @@ const TipTapEditor = ({ content, onChange, placeholder }: TipTapEditorProps) => 
     return null;
   }
 
-  const addImage = () => {
-    const url = window.prompt("Enter image URL");
-    
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
-    }
+  const addImage = (url: string) => {
+    editor.chain().focus().setImage({ src: url }).run();
   };
 
   const setLink = () => {
@@ -261,16 +258,17 @@ const TipTapEditor = ({ content, onChange, placeholder }: TipTapEditorProps) => 
         >
           <Link2 className="h-4 w-4" />
         </Button>
-        <Button
-          type="button"
-          size="sm"
-          variant="outline"
-          onClick={addImage}
-          className="h-8 w-8 p-0"
-          title="Add Image"
-        >
-          <ImageIcon className="h-4 w-4" />
-        </Button>
+        <ImageUploadModal onImageSelect={addImage}>
+          <Button
+            type="button"
+            size="sm"
+            variant="outline"
+            className="h-8 w-8 p-0"
+            title="Add Image"
+          >
+            <ImageIcon className="h-4 w-4" />
+          </Button>
+        </ImageUploadModal>
 
         <div className="w-px h-8 bg-gray-300 mx-1" />
 

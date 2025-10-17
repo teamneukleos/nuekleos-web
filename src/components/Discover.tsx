@@ -16,7 +16,7 @@ const Discover = () => {
         </p>
 
         {/* Link */}
-        <Link
+        {/* <Link
           href="/discover"
           className="inline-flex items-center gap-2 text-sm md:text-xs font-medium hover:opacity-90 transition"
         >
@@ -24,7 +24,7 @@ const Discover = () => {
           <span className="p-1.5 bg-orange-600 rounded-sm">
             <ArrowRight className="text-white" size={16} />
           </span>
-        </Link>
+        </Link> */}
       </div>
     </section>
   );
