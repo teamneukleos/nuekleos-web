@@ -23,14 +23,15 @@ export default function Hero() {
 
         {/* ✅ Mobile paragraph (sm screens) */}
         <p className="mt-6 text-xs leading-relaxed font-light sm:hidden">
-          We aggregate talents and opportunities that advance local production,
+          We aggregate talents and opportunities <br /> 
+          that advance local production,
           create access, enable ecosystems, people and resources,
           advancing Africa’s creative productivity.
         </p>
 
         {/* ✅ Tablet paragraph (sm–md screens) */}
         <p className="hidden sm:block md:hidden mt-6 text-sm leading-relaxed font-light">
-          We aggregate talents and opportunities that advance local production,
+          We aggregate talents and opportunities that advance <br />local production,
           create access, and enable ecosystems, people, and resources —
           advancing Africa’s creative productivity.
         </p>

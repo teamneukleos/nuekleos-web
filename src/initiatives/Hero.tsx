@@ -23,10 +23,11 @@ export default function Hero() {
 
         {/* ----------- MOBILE (<640px) ----------- */}
         <p className="mt-6 text-xs font-light leading-relaxed block sm:hidden">
-          Our initiatives advance local production and 
-          strengthen communities by connecting people,
-          opportunities and resources. Each one is 
-          designed to unlock potential, drive growth, 
+          Our initiatives advance local production <br />
+           and strengthen communities by <br />
+           connecting people, opportunities <br />
+           and resources. Each one is 
+          designed <br />to unlock potential, drive growth,<br /> 
           and showcase Africa&apos;s creativity.
         </p>
 

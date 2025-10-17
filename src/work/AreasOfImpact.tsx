@@ -92,8 +92,8 @@ export default function AreasOfImpact() {
                     : "opacity-0 pointer-events-none"
                 }`}
               >
-                <div className="bg-orange-600 w-[100%] sm:w-[85%] items-center md:w-[100%] h-[85%] flex justify-center shadow-md transition-all duration-300">
-                  <p className="text-[10px] sm:text-[10px] md:text-[10px] text-white px-4 leading-relaxed">
+                <div className="bg-orange-600 w-[100%] sm:w-[85%] md:w-[100%] h-[85%] md:h-[90%] flex justify-center items-center shadow-md transition-all duration-300">
+                  <p className="text-[10px] sm:text-[10px] md:text-xs text-white px-4 leading-relaxed">
                     {area.content}
                   </p>
                 </div>

@@ -26,11 +26,11 @@ const StrategicPartnership = () => {
               <h2 className="text-3xl md:text-2xl font-semibold text-white mb-4">
                 Strategic Partnerships & Collaboration
               </h2>
-              <p className="text-xl md:text-lg text-white leading-relaxed">
-                We team up with governments, businesses, and communities <br />
-                to open doors, shape policy, and power the creative sector,{" "}
-                <br />
-                turning ideas into jobs, innovation, and inclusive growth.
+              <p className="text-sm md:text-sm text-white leading-relaxed">
+                We team up with governments, businesses, and <br />
+                communities to open doors, shape policy, and power <br />
+                the creative sector,turning ideas into jobs, <br />
+                innovation, and inclusive growth.
               </p>
             </div>
 

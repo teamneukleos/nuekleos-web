@@ -27,11 +27,13 @@ const SkillsDevelopment = () => {
               <h2 className="text-3xl md:text-2xl text-black mb-4">
                 Skills Development
               </h2>
-              <p className="text-sm md:text-xs text-black leading-relaxed">
-                We equip creatives with skills and mindset to thrive, with
-                technical, soft, and leadership skills, blending training with
-                mindset shifts, to build confidence, quality, and resilience,
-                driving equity, youth empowerment, and lasting community impact.
+              <p className="text-sm md:text-sm text-black leading-relaxed">
+                We equip creatives with skills and mindset to <br />
+                thrive, with technical, soft, and leadership skills, <br />
+                blending training with mindset shifts, to build <br />
+                confidence, quality, and resilience, driving <br />
+                equity, youth empowerment, and lasting <br />
+                community impact.
               </p>
             </div>
 

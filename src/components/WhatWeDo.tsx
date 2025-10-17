@@ -1,8 +1,31 @@
 "use client";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const WhatWeDo = () => {
+  const [showSwipeIcon, setShowSwipeIcon] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowSwipeIcon(entry.isIntersecting);
+      },
+      { threshold: 0.7 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const services = [
     {
       title: "Business Development",
@@ -39,45 +62,57 @@ const WhatWeDo = () => {
   ];
 
   return (
-    <section className="py-16 px-6 md:px-12 lg:px-16 bg-gray-50">
+    <section ref={sectionRef} className="py-16 px-6 md:px-12 lg:px-16 bg-gray-50">
       {/* Section Title */}
       <h2 className="text-xl md:text-sm mb-10 uppercase tracking-wide">
         What We Do
       </h2>
 
       {/* Cards Container */}
-      <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scrollbar-hide">
-        <div className="flex gap-6 min-w-max">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className={`${service.bg} ${service.textColor} p-8 flex flex-col justify-end min-h-[400px] w-[350px] md:w-[300px] lg:w-[350px]`}
-            >
-              <div className="mb-10">
-                <h3 className="text-xl md:text-xl font-semibold mb-4 leading-tight">
-                  {service.title}
-                </h3>
-                <p className="text-sm md:text-sm leading-relaxed opacity-90">
-                  {service.description}
-                </p>
-              </div>
-
-              {/* Smooth link */}
-              <Link
-                href={service.link}
-                scroll={true}
-                className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
+      <div className="relative">
+        <div className="overflow-x-auto pb-6 -mx-6 px-6 md:-mx-12 md:px-12 lg:-mx-16 lg:px-16 scrollbar-hide relative">
+          <div className="flex gap-6 min-w-max">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className={`${service.bg} ${service.textColor} p-8 flex flex-col justify-end min-h-[400px] w-[350px] md:w-[300px] lg:w-[350px]`}
               >
-                Read More
-                <ArrowUpRight
-                  size={18}
-                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                />
-              </Link>
-            </div>
-          ))}
+                <div className="mb-10">
+                  <h3 className="text-xl md:text-xl font-semibold mb-4 leading-tight">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm md:text-sm leading-relaxed opacity-90">
+                    {service.description}
+                  </p>
+                </div>
+                {/* Smooth link */}
+                <Link
+                  href={service.link}
+                  scroll={true}
+                  className="inline-flex items-center gap-2 text-sm font-medium hover:gap-3 transition-all group"
+                >
+                  Read More
+                  <ArrowUpRight
+                    size={18}
+                    className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                  />
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Swipe icon - only shows when section is visible */}
+      {showSwipeIcon && (
+        <div className="md:hidden fixed bottom-20 right-6 z-10">
+          <img
+            src="/swipe-icon.png"
+            alt="Swipe right"
+            className="w-7 h-7 opacity-80"
+          />
+        </div>
+      )}
     </section>
   );
 };
