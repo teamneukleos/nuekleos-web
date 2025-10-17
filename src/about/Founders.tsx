@@ -43,7 +43,7 @@ const founders: Founder[] = [
 ];
 
 const Founders: React.FC = () => {
-  const [hoveredFounder, setHoveredFounder] = useState<Founder | null>(null);
+  const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null);
 
   return (
     <section className="py-12 px-6 md:px-16 relative">
@@ -54,16 +54,14 @@ const Founders: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-4 max-w-6xl">
         {/* Left: Main Founder */}
         <div
-          className="relative overflow-hidden h-[300px] md:h-[600px] w-full cursor-pointer"
-          onMouseEnter={() => setHoveredFounder(founders[0])}
-          onMouseLeave={() => setHoveredFounder(null)}
-          onClick={() => setHoveredFounder(founders[0])}
+          className="relative overflow-hidden h-[300px] md:h-[600px] w-full cursor-pointer group"
+          onClick={() => setSelectedFounder(founders[0])}
         >
           <Image
             src={founders[0].image}
             alt={founders[0].name}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
 
@@ -72,45 +70,43 @@ const Founders: React.FC = () => {
           {founders.slice(1).map((founder) => (
             <div
               key={founder.name}
-              className="relative overflow-hidden h-[240px] md:h-[295px] w-full cursor-pointer"
-              onMouseEnter={() => setHoveredFounder(founder)}
-              onMouseLeave={() => setHoveredFounder(null)}
-              onClick={() => setHoveredFounder(founder)}
+              className="relative overflow-hidden h-[240px] md:h-[295px] w-full cursor-pointer group"
+              onClick={() => setSelectedFounder(founder)}
             >
               <Image
                 src={founder.image}
                 alt={founder.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Hover Overlay Modal */}
-      {hoveredFounder && (
-        <div 
+      {/* Click Modal (Stable, no flicker) */}
+      {selectedFounder && (
+        <div
           className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center cursor-pointer"
-          onClick={() => setHoveredFounder(null)}
+          onClick={() => setSelectedFounder(null)}
         >
           <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[480px]">
             <Image
-              src={hoveredFounder.image}
-              alt={hoveredFounder.name}
+              src={selectedFounder.image}
+              alt={selectedFounder.name}
               fill
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex flex-col justify-end p-5">
               <h3 className="text-white text-xl md:text-2xl font-bold uppercase leading-tight">
-                {hoveredFounder.name}
+                {selectedFounder.name}
               </h3>
               <p className="text-white text-xs md:text-sm mt-1 font-normal">
-                {hoveredFounder.role}
+                {selectedFounder.role}
               </p>
               <div className="w-16 h-0.5 bg-white my-2.5"></div>
               <p className="text-white text-xs leading-relaxed font-light">
-                {hoveredFounder.bio}
+                {selectedFounder.bio}
               </p>
             </div>
           </div>
