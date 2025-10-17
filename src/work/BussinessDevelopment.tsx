@@ -27,10 +27,11 @@ const BusinessDevelopment = () => {
               <h2 className="text-2xl md:text-xl text-black mb-4">
                 Business Development
               </h2>
-              <p className="text-sm md:text-xs text-black leading-relaxed">
-                We help creative businesses in fashion, craft, and the arts access
-                funding, sharpen their business skills, and scale sustainably,
-                driving jobs, resilience, and lasting local impact.
+              <p className="text-sm md:text-sm text-black leading-relaxed">
+                We help creative businesses in fashion, craft, and <br />
+                the arts access funding, sharpen their business <br />
+                skills, and scale sustainably, driving jobs, <br />
+                resilience, and lasting local impact.
               </p>
             </div>
 
