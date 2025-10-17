@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 type Founder = {
@@ -43,7 +43,22 @@ const founders: Founder[] = [
 ];
 
 const Founders: React.FC = () => {
-  const [selectedFounder, setSelectedFounder] = useState<Founder | null>(null);
+  const [activeFounder, setActiveFounder] = useState<Founder | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile
+  useEffect(() => {
+    const checkScreen = () => setIsMobile(window.innerWidth < 768);
+    checkScreen();
+    window.addEventListener("resize", checkScreen);
+    return () => window.removeEventListener("resize", checkScreen);
+  }, []);
+
+  const handleSelect = (founder: Founder) => {
+    if (isMobile) {
+      setActiveFounder(founder);
+    }
+  };
 
   return (
     <section className="py-12 px-6 md:px-16 relative">
@@ -55,7 +70,9 @@ const Founders: React.FC = () => {
         {/* Left: Main Founder */}
         <div
           className="relative overflow-hidden h-[300px] md:h-[600px] w-full cursor-pointer group"
-          onClick={() => setSelectedFounder(founders[0])}
+          onClick={() => handleSelect(founders[0])}
+          onMouseEnter={() => !isMobile && setActiveFounder(founders[0])}
+          onMouseLeave={() => !isMobile && setActiveFounder(null)}
         >
           <Image
             src={founders[0].image}
@@ -65,13 +82,15 @@ const Founders: React.FC = () => {
           />
         </div>
 
-        {/* Right: Grid of 4 Founders */}
+        {/* Right: 4 Founders */}
         <div className="grid grid-cols-2 gap-3">
           {founders.slice(1).map((founder) => (
             <div
               key={founder.name}
               className="relative overflow-hidden h-[240px] md:h-[295px] w-full cursor-pointer group"
-              onClick={() => setSelectedFounder(founder)}
+              onClick={() => handleSelect(founder)}
+              onMouseEnter={() => !isMobile && setActiveFounder(founder)}
+              onMouseLeave={() => !isMobile && setActiveFounder(null)}
             >
               <Image
                 src={founder.image}
@@ -84,29 +103,31 @@ const Founders: React.FC = () => {
         </div>
       </div>
 
-      {/* Click Modal (Stable, no flicker) */}
-      {selectedFounder && (
+      {/* Overlay on Hover (Desktop) or Click (Mobile) */}
+      {activeFounder && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center cursor-pointer"
-          onClick={() => setSelectedFounder(null)}
+          className={`fixed inset-0 bg-black bg-opacity-80 z-50 flex items-center justify-center ${
+            isMobile ? "cursor-pointer" : "pointer-events-none"
+          }`}
+          onClick={() => isMobile && setActiveFounder(null)}
         >
-          <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[480px]">
+          <div className="relative w-[320px] h-[400px] md:w-[380px] md:h-[480px] pointer-events-auto">
             <Image
-              src={selectedFounder.image}
-              alt={selectedFounder.name}
+              src={activeFounder.image}
+              alt={activeFounder.name}
               fill
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent flex flex-col justify-end p-5">
               <h3 className="text-white text-xl md:text-2xl font-bold uppercase leading-tight">
-                {selectedFounder.name}
+                {activeFounder.name}
               </h3>
               <p className="text-white text-xs md:text-sm mt-1 font-normal">
-                {selectedFounder.role}
+                {activeFounder.role}
               </p>
               <div className="w-16 h-0.5 bg-white my-2.5"></div>
               <p className="text-white text-xs leading-relaxed font-light">
-                {selectedFounder.bio}
+                {activeFounder.bio}
               </p>
             </div>
           </div>
