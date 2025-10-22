@@ -10,7 +10,7 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Ethnocentrique",
+  title: "Neukleos",
   description: "We enable African Markets to thrive at home and on the global stage",
   icons: {
     icon: [
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     apple: "/logo-icon.png",
   },
   openGraph: {
-    title: "Ethnocentrique",
+    title: "Neukleos",
     description: "We enable African Markets to thrive at home and on the global stage",
     images: "/logo-icon.png",
   },
